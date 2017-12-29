@@ -1,0 +1,2 @@
+password = gamerule@123
+alias = rule

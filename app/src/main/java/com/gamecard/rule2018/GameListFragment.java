@@ -3,6 +3,7 @@ package com.gamecard.rule2018;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,14 +42,15 @@ public class GameListFragment extends Fragment {
         rvListItem = (RecyclerView) view.findViewById(R.id.rvListItem);
         rvListItem.setHasFixedSize(true);
         ArrayList<GameItem> gameList = new ArrayList<GameItem>();
-        gameList.add(new GameItem("Tài xỉu", 17));
-        gameList.add(new GameItem("Xóc đĩa", 15));
-        gameList.add(new GameItem("Ba cây", 1));
-        gameList.add(new GameItem("Tiến lên miền Nam", 5));
-        gameList.add(new GameItem("Phỏm", 4));
-        gameList.add(new GameItem("Mậu binh", 12));
-        gameList.add(new GameItem("Xì tố", 2));
-        gameList.add(new GameItem("Poker", 3));
+        gameList.add(new GameItem("Tài xỉu", "https://sanhrong.com/game-tai-xiu/luat-choi"));
+        gameList.add(new GameItem("Xóc đĩa", "https://xocdia88.net/huong-dan-luat-choi-xoc-dia-online/"));
+        gameList.add(new GameItem("Ba cây", "https://bigkool.net/ba-cay/huong-dan-choi-ba-cay/"));
+        gameList.add(new GameItem("Tiến lên miền Nam", "https://bigkool.net/tien-len-mien-nam/huong-dan-choi-tien-len-mien-nam/"));
+        gameList.add(new GameItem("Phỏm", "https://bigkool.net/phom-ta-la/huong-dan-choi-phom-ta-la/"));
+        gameList.add(new GameItem("Mậu binh", "https://bigkool.net/mau-binh/huong-dan-choi-mau-binh/"));
+        gameList.add(new GameItem("Xì tố", "https://bigkool.net/xi-to/huong-dan-choi-xi-to/"));
+        gameList.add(new GameItem("Poker", "https://danhbai123.com/huong-dan-cach-choi-bai-poker-luat-choi-poker-co-ban/"));
+        gameList.add(new GameItem("Liêng", "https://sanhrong.com/game-lieng/luat-choi"));
         GameListAdapter adapter = new GameListAdapter(getActivity(), gameList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rvListItem.setAdapter(adapter);
@@ -67,4 +69,10 @@ public class GameListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(getString(R.string.app_name));
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 }

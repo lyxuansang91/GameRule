@@ -6,7 +6,7 @@ package com.gamecard.rule2018;
 
 public class GameItem {
     private String gameName;
-    private int gameZone;
+    private String url;
 
     public String getGameName() {
         return gameName;
@@ -16,19 +16,19 @@ public class GameItem {
         this.gameName = gameName;
     }
 
-    public int getGameZone() {
-        return gameZone;
+    public String getUrl() {
+        return this.url;
     }
 
-    public void setGameZone(int gameZone) {
-        this.gameZone = gameZone;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public GameItem() {
     }
 
-    public GameItem(String gameName, int gameZone) {
+    public GameItem(String gameName, String url) {
         this.gameName = gameName;
-        this.gameZone = gameZone;
+        this.url = url;
     }
 }

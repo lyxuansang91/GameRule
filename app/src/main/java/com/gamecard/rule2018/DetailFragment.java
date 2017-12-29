@@ -1,9 +1,13 @@
 package com.gamecard.rule2018;
 
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -16,17 +20,20 @@ import android.webkit.WebView;
 public class DetailFragment extends Fragment {
 
 
+    private static final String TAG = DetailFragment.class.getSimpleName();
     WebView wvDetail;
-    int zoneId = -1;
+    String url = "";
+    String name = "";
 
     public DetailFragment() {
         // Required empty public constructor
     }
 
-    public static Fragment getNewInstance(int zoneId) {
+    public static Fragment getNewInstance(String gameName, String url) {
         Fragment detailFragment = new DetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("ZONE_ID", zoneId);
+        bundle.putString("URL", url);
+        bundle.putString("NAME", gameName);
         detailFragment.setArguments(bundle);
         return detailFragment;
     }
@@ -36,8 +43,20 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initUI(rootView);
         return rootView;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.getActivity().onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void initUI(View view) {
@@ -46,10 +65,13 @@ public class DetailFragment extends Fragment {
         WebSettings webSettings = wvDetail.getSettings();
         webSettings.setJavaScriptEnabled(true);
         if(bundle != null) {
-            zoneId = bundle.getInt("ZONE_ID");
+            url = bundle.getString("URL", "");
+            name = bundle.getString("NAME", "");
         }
-        if(zoneId != -1) {
-            wvDetail.loadUrl();
+        if(!url.equals("")) {
+            Log.d(TAG, "url:"+ url);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(name);
+            wvDetail.loadUrl(url);
         }
     }
 
