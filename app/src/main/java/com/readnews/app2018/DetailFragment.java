@@ -1,4 +1,4 @@
-package com.gamecard.rule2018;
+package com.readnews.app2018;
 
 
 
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import com.readnews.com.readnews.app2018.R;
 
 
 /**
@@ -29,11 +31,11 @@ public class DetailFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static Fragment getNewInstance(String gameName, String url) {
+    public static Fragment getNewInstance(String name, String url) {
         Fragment detailFragment = new DetailFragment();
         Bundle bundle = new Bundle();
         bundle.putString("URL", url);
-        bundle.putString("NAME", gameName);
+        bundle.putString("NAME", name);
         detailFragment.setArguments(bundle);
         return detailFragment;
     }

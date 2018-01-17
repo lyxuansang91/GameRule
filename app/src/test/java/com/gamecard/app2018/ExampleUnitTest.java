@@ -1,4 +1,4 @@
-package com.gamecard.rule2018;
+package com.gamecard.app2018;
 
 import org.junit.Test;
 

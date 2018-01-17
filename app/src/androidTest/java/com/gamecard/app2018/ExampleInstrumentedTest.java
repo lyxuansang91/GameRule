@@ -1,4 +1,4 @@
-package com.gamecard.rule2018;
+package com.gamecard.app2018;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.gamecard.rule2018", appContext.getPackageName());
+        assertEquals("com.gamecard.com.readnews.com.readnews.app2018", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.gamecard.rule2018;
+package com.readnews.app2018;
 
 
 import android.os.Bundle;
@@ -11,7 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gamecard.rule2018.adapter.GameListAdapter;
+import com.readnews.app2018.adapter.NewsListAdapter;
+import com.readnews.com.readnews.app2018.R;
 
 import java.util.ArrayList;
 
@@ -19,17 +20,17 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GameListFragment extends Fragment {
+public class NewsListFragment extends Fragment {
 
 
     private RecyclerView rvListItem;
 
-    public GameListFragment() {
+    public NewsListFragment() {
         // Required empty public constructor
     }
 
     public static Fragment getNewInstance() {
-        Fragment fragment = new GameListFragment();
+        Fragment fragment = new NewsListFragment();
         return fragment;
     }
 
@@ -41,17 +42,18 @@ public class GameListFragment extends Fragment {
     private void initUI(View view) {
         rvListItem = (RecyclerView) view.findViewById(R.id.rvListItem);
         rvListItem.setHasFixedSize(true);
-        ArrayList<GameItem> gameList = new ArrayList<GameItem>();
-        gameList.add(new GameItem("Tài xỉu", "https://sanhrong.com/game-tai-xiu/luat-choi"));
-        gameList.add(new GameItem("Xóc đĩa", "https://xocdia88.net/huong-dan-luat-choi-xoc-dia-online/"));
-        gameList.add(new GameItem("Ba cây", "https://bigkool.net/ba-cay/huong-dan-choi-ba-cay/"));
-        gameList.add(new GameItem("Tiến lên miền Nam", "https://bigkool.net/tien-len-mien-nam/huong-dan-choi-tien-len-mien-nam/"));
-        gameList.add(new GameItem("Phỏm", "https://bigkool.net/phom-ta-la/huong-dan-choi-phom-ta-la/"));
-        gameList.add(new GameItem("Mậu binh", "https://bigkool.net/mau-binh/huong-dan-choi-mau-binh/"));
-        gameList.add(new GameItem("Xì tố", "https://bigkool.net/xi-to/huong-dan-choi-xi-to/"));
-        gameList.add(new GameItem("Poker", "https://danhbai123.com/huong-dan-cach-choi-bai-poker-luat-choi-poker-co-ban/"));
-        gameList.add(new GameItem("Liêng", "https://sanhrong.com/game-lieng/luat-choi"));
-        GameListAdapter adapter = new GameListAdapter(getActivity(), gameList);
+        ArrayList<Item> newList = new ArrayList<Item>();
+        newList.add(new Item("VNExpress", "https://vnexpress.net/"));
+        newList.add(new Item("Dân trí", "http://dantri.com.vn/"));
+        newList.add(new Item("Vietnamnet", "http://vietnamnet.vn/"));
+        newList.add(new Item("Tinh tế", "https://tinhte.vn/"));
+        newList.add(new Item("Kênh 14", "http://kenh14.vn/"));
+        newList.add(new Item("Báo mới", "https://baomoi.com/"));
+        newList.add(new Item("Zing news", "https://news.zing.vn/"));
+        newList.add(new Item("Báo 24h", "http://www.24h.com.vn/"));
+        newList.add(new Item("Soha News", "http://soha.vn/"));
+        newList.add(new Item("Tin tức online", "http://tintuconline.com.vn/"));
+        NewsListAdapter adapter = new NewsListAdapter(getActivity(), newList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rvListItem.setAdapter(adapter);
         rvListItem.setLayoutManager(layoutManager);
