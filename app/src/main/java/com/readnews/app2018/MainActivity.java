@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements  BillingProcessor
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         requestPermission();
         initUI();
     }
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements  BillingProcessor
         APIService service = MyApplication.getInstance().getService();
         String transId = APICommon.getTransId();
         String key = APICommon.getKey(transId);
-        Call<BaseModel> call =  service.getPurchaseAPI(transId, productId, APICommon.getDeviceId(MainActivity.this), key);
+        Call<BaseModel> call =  service.getPurchaseAPI(transId, productId, "123", APICommon.getDeviceId(MainActivity.this), key);
         call.enqueue(new Callback<BaseModel>() {
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
@@ -218,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements  BillingProcessor
         return packageName;
     }
 
-    public static final boolean TEST = false;
+    public static final boolean TEST = true;
 
     public String getReferenceCode() {
         if(TEST) {
@@ -305,12 +307,7 @@ public class MainActivity extends AppCompatActivity implements  BillingProcessor
                         public void onClick(DialogInterface dialog, int which) {
                             // do nothing
                         }
-                    }).setItems(new CharSequence[]{"1", "2", "3"}, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Log.d(TAG, "on click" + i);
-                        }
-            }).show();
+                    }).show();
 
         } else {
             addFragment(DetailFragment.getNewInstance(item.getName(), item.getUrl()), true);

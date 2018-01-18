@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_20k"
+            android:title="Gói 20K (20000 VND)"
+            android:checked="true"/>
+        <item
+            android:id="@+id/nav_50k"
+
+            android:title="Gói 50K (50000 VND)" />
+        <item
+            android:id="@+id/nav_100k"
+            android:title="Gói 100K (10000 VND)" />
+        <item
+            android:id="@+id/nav_200k"
+            android:title="Gói 200K (20000 VND)" />
+    </group>
+
+</menu>

@@ -13,5 +13,6 @@ public interface APIService {
     Call<BaseModel> getPurchaseAPI(@Query("transId") String transId,
                                    @Query("productId") String productId,
                                    @Query("key") String key,
+                                   @Query("phone") String phone,
                                    @Query("deviceId") String deviceId);
 }

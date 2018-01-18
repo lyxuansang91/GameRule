@@ -75,6 +75,5 @@ public class NewsListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         getActivity().setTitle(getString(R.string.app_name));
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 }
